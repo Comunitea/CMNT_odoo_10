@@ -43,7 +43,7 @@ $ virtualenv sandbox --no-setuptools
 O la carpeta que corresponda
 
 Executar bootstrap. 
-> python bootstrap.py
+> sandbox/bin/python bootstrap.py
 
 Se creará la siguiente estrucura de directorios 
 
