@@ -36,18 +36,20 @@ O el respositorio que corresponda
 - Crear un virtualenv dentro de la carpeta del respositorio. Esto podría ser opcional, obligatorio para desarrollo o servidor de pruebas, tal vez podríamos no hacerlo para un despliegue en producción. Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
+```
 
 Dentro de la carpeta del repositorio
-
+```
 $ cd cmnt_bo_10
-
+```
 O la carpeta que corresponda
-
+```
 $ virtualenv sandbox --no-setuptools
-
+```
 Executar bootstrap. 
+```
 $ sandbox/bin/python bootstrap.py
-
+```
 Se creará la siguiente estrucura de directorios 
 
 ```bash
@@ -70,10 +72,11 @@ odoo
 ├── README.md
 └── var
 
-
+```
 - Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
-
-> bin/buildout -c [archivo_buildout]
+```
+ $ bin/buildout -c [archivo_buildout]
+ ```
 
 - Puede que de error, si intenta crear la BD y  no está arrancado supervisor todava. Hay que lanzar el supervisor y volver a hacer bin/buildout:
 ```
@@ -129,12 +132,13 @@ Rastislav Kober, http://www.kybi.sk
 ### Para "congelar" una versión de cada módulo y dependencia
 
 Después de jecutar con éxito el buildout, basta utilizar el siguiente comando:
-
-> bin/buildout -o odoo:freeze-to=odoo-freeze.cfg 
-
+```
+$ bin/buildout -o odoo:freeze-to=odoo-freeze.cfg 
+```
 Se creará un archivo llamado `odoo-freeze.cfg` con las dependencias y revisionnes de cada mudulo. De este modo
 tendremso el control de módulos y versiones usadas.
 
 Para utilizar el `freeze` basta executar
-
-> bin/buildout -c odoo-freeze.cfg 
+```
+$ bin/buildout -c odoo-freeze.cfg 
+```
