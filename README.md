@@ -1,5 +1,5 @@
 # Buildout base para proyectos con Odoo y PostgreSQL
-Odoo 10 en el base, PostgreSQL 9.5.2 y Supervisord 3.0
+Odoo 10 en el base, PostgreSQL 9.6.1 y Supervisord 3.0
 - Supervisor ejecuta PostgreSQL, más info http://supervisord.org/
 - También ejecuta la instancia de PostgreSQL
 - Si existe  un archivo frozen.cfg es el que se debeía usar ya que contiene las revisiones aprobadas
@@ -36,14 +36,17 @@ O el respositorio que corresponda
 - Crear un virtualenv dentro de la carpeta del respositorio. Esto podría ser opcional, obligatorio para desarrollo o servidor de pruebas, tal vez podríamos no hacerlo para un despliegue en producción. Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
-$ virtualenv sandbox --no-setuptools
 
+Dentro de la carpeta del repositorio
 
-> cd cmnt_bo_10
+$ cd cmnt_bo_10
+
 O la carpeta que corresponda
 
+$ virtualenv sandbox --no-setuptools
+
 Executar bootstrap. 
-> sandbox/bin/python bootstrap.py
+$ sandbox/bin/python bootstrap.py
 
 Se creará la siguiente estrucura de directorios 
 
@@ -72,12 +75,12 @@ odoo
 
 > bin/buildout -c [archivo_buildout]
 
-- Puede que de error, hay que lanzar el supervisor y volver a hacer bin/buildout:
+- Puede que de error, si intenta crear la BD y  no está arrancado supervisor todava. Hay que lanzar el supervisor y volver a hacer bin/buildout:
 ```
 $ bin/supervisord
 $ bin/buildout -c [archivo_buildout]
 ```
-- Conectarse al supervisor con localhost:9002
+- Conectarse al supervisor con localhost:9002 
 - Si fuera necesario hacer update all, se puede parar desde el supervisor y en la consola hacer:
 ```
 $ cd bin
